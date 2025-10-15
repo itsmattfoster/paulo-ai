@@ -1,11 +1,12 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Send, Sparkles, RotateCcw } from 'lucide-react'
+import { Send, RotateCcw } from 'lucide-react'
 import { useStore } from '@/store/useStore'
 import { generateId } from '@/lib/utils'
 import ModeSelector from './ModeSelector'
 import MessageList from './MessageList'
+import Logo from './Logo'
 
 export default function ChatInterface() {
   const [input, setInput] = useState('')
@@ -139,26 +140,26 @@ export default function ChatInterface() {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="h-screen flex flex-col bg-gradient-to-br from-orange-50 via-white to-red-50">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 shadow-sm">
+      <div className="bg-white border-b border-orange-100 shadow-sm">
         <div className="max-w-5xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
-                <Sparkles className="w-6 h-6 text-white" />
+              <div className="mr-3">
+                <Logo size="md" showText={false} />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Content AI</h1>
-                <p className="text-sm text-gray-500">AI-powered content creation</p>
+                <h1 className="text-xl font-bold" style={{ color: '#FF6B45' }}>Paulo AI</h1>
+                <p className="text-sm text-gray-600">AI-powered content creation</p>
               </div>
             </div>
             <button
               onClick={handleReset}
-              className="flex items-center px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition"
+              className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-orange-50 rounded-xl hover:bg-orange-100 border border-orange-200 transition-all duration-200"
             >
               <RotateCcw className="w-4 h-4 mr-2" />
-              Reset
+              New Session
             </button>
           </div>
           <ModeSelector />
@@ -174,17 +175,17 @@ export default function ChatInterface() {
       </div>
 
       {/* Input */}
-      <div className="bg-white border-t border-gray-200 shadow-lg">
+      <div className="bg-white border-t border-orange-100 shadow-lg">
         <div className="max-w-5xl mx-auto px-4 py-4">
           <form onSubmit={handleSubmit} className="flex items-end space-x-3">
-            <div className="flex-1 bg-gray-50 rounded-lg border border-gray-200 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500 transition">
+            <div className="flex-1 bg-orange-50 rounded-xl border border-orange-200 focus-within:border-orange-400 focus-within:ring-2 focus-within:ring-orange-200 transition-all duration-200">
               <textarea
                 ref={textareaRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Type your message... (Shift+Enter for new line)"
-                className="w-full px-4 py-3 bg-transparent outline-none resize-none max-h-32"
+                className="w-full px-4 py-3 bg-transparent outline-none resize-none max-h-32 placeholder-gray-500"
                 rows={1}
                 disabled={isGenerating}
               />
@@ -192,7 +193,7 @@ export default function ChatInterface() {
             <button
               type="submit"
               disabled={!input.trim() || isGenerating}
-              className="flex-shrink-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-shrink-0 paulo-gradient text-white p-3.5 rounded-xl hover:shadow-xl hover:shadow-orange-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95"
             >
               <Send className="w-5 h-5" />
             </button>

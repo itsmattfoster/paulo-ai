@@ -23,15 +23,15 @@ export default function AnalysisLoader({ progress }: AnalysisLoaderProps) {
   }, [progress])
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <div className="w-full max-w-2xl">
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-orange-50 via-white to-red-50">
+      <div className="w-full max-w-2xl animate-fade-in">
+        <div className="bg-white rounded-2xl shadow-2xl p-8 border border-orange-100">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-4 animate-pulse-slow">
+            <div className="inline-flex items-center justify-center w-16 h-16 paulo-gradient rounded-2xl mb-4 shadow-xl shadow-orange-200 animate-pulse-slow">
               <Loader2 className="w-8 h-8 text-white animate-spin" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold mb-2" style={{ color: '#FF6B45' }}>
               Analyzing Your Content
             </h2>
             <p className="text-gray-600">
@@ -49,20 +49,20 @@ export default function AnalysisLoader({ progress }: AnalysisLoaderProps) {
               return (
                 <div
                   key={step.id}
-                  className={`flex items-center p-4 rounded-lg border transition-all duration-300 ${
+                  className={`flex items-center p-4 rounded-xl border transition-all duration-300 ${
                     isActive
-                      ? 'border-blue-500 bg-blue-50'
+                      ? 'border-orange-400 bg-gradient-to-r from-orange-50 to-red-50 shadow-md'
                       : isCompleted
-                      ? 'border-green-200 bg-green-50'
+                      ? 'border-green-300 bg-green-50'
                       : 'border-gray-200 bg-gray-50'
                   }`}
                 >
                   <div
-                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
+                    className={`flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center shadow-md transition-all duration-300 ${
                       isActive
-                        ? 'bg-blue-500'
+                        ? 'paulo-gradient shadow-orange-300'
                         : isCompleted
-                        ? 'bg-green-500'
+                        ? 'bg-gradient-to-br from-green-500 to-emerald-500 shadow-green-300'
                         : 'bg-gray-300'
                     }`}
                   >
@@ -78,7 +78,7 @@ export default function AnalysisLoader({ progress }: AnalysisLoaderProps) {
                   </div>
                   <div className="ml-4 flex-1">
                     <p
-                      className={`font-medium ${
+                      className={`font-semibold ${
                         isActive || isCompleted
                           ? 'text-gray-900'
                           : 'text-gray-500'
@@ -88,7 +88,7 @@ export default function AnalysisLoader({ progress }: AnalysisLoaderProps) {
                     </p>
                   </div>
                   {isActive && (
-                    <Loader2 className="w-5 h-5 text-blue-500 animate-spin" />
+                    <Loader2 className="w-5 h-5 animate-spin" style={{ color: '#FF6B45' }} />
                   )}
                 </div>
               )
@@ -97,16 +97,16 @@ export default function AnalysisLoader({ progress }: AnalysisLoaderProps) {
 
           {/* Current Progress Text */}
           {progress && (
-            <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <p className="text-sm text-gray-700 text-center">{progress}</p>
+            <div className="mt-6 p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-xl border border-orange-200">
+              <p className="text-sm text-gray-700 text-center font-medium">{progress}</p>
             </div>
           )}
 
           {/* Progress Bar */}
           <div className="mt-6">
-            <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div className="h-2.5 bg-gray-200 rounded-full overflow-hidden shadow-inner">
               <div
-                className="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-500 ease-out"
+                className="h-full paulo-gradient transition-all duration-500 ease-out shadow-lg"
                 style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
               />
             </div>

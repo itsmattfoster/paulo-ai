@@ -5,8 +5,13 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Content AI - Intelligent Content Creation',
-  description: 'AI-powered content creation platform that learns from your brand',
+  title: 'Paulo AI - Your Brand. Automated.',
+  description: 'The AI that learns your voice, your offers, and your story — so every piece of copy feels handcrafted.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
